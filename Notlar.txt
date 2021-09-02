@@ -1,1 +1,2 @@
 *** GraphQL Notlar ***
+- Postman yerine Insomnia kullanılabilir.

@@ -5,12 +5,19 @@ const randomWords = require('random-words');
 
 const schema = buildSchema(`
   type Query {
-    saySomething: String
+    saySomething: String,
+    sayThings(count: Int!): [String],
   }
 `);
 
 const root = {
     saySomething: () => randomWords(),
+    sayThings: ({count}) => {
+        console.log('count', count);
+        const words = randomWords(count);
+        console.log('words', words);
+        return words;
+    },
 };
 
 const app = express();
@@ -21,3 +28,20 @@ app.use('/graphql', graphqlHTTP({
 }));
 app.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/graphql');
+
+/*
+{
+  saySomething,
+  sayThings(count: 3)
+}
+
+query test($count: Int!)
+{
+  saySomething,
+  sayThings(count: $count)
+}
+
+{
+  "count": 3
+}
+ */
