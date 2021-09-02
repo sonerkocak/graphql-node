@@ -1,7 +1,6 @@
 const { readFileSync } = require('fs')
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const randomWords = require('random-words');
 const {buildSchema} = require("graphql");
 
 let id = 0;
@@ -22,11 +21,15 @@ const root = {
         console.log('POSTS', POSTS);
         return 'OK';
     },
-
 };
 
+function loggingMiddleware (req, res, next) {
+    console.log('ip:', req.ip);
+    next();
+}
 
 const app = express();
+app.use(loggingMiddleware);
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,
