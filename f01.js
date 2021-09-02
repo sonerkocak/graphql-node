@@ -12,12 +12,7 @@ const schema = buildSchema(`
 
 const root = {
     saySomething: () => randomWords(),
-    sayThings: ({count}) => {
-        console.log('count', count);
-        const words = randomWords(count);
-        console.log('words', words);
-        return words;
-    },
+    sayThings: ({count}) => randomWords(count),
 };
 
 const app = express();
