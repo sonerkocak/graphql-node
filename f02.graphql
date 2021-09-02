@@ -1,0 +1,29 @@
+input PostInput {
+  text: String!
+  tags: [String]
+}
+
+input CommentInput {
+  text: String!
+}
+
+type Comment {
+  id: ID!
+  text: String!
+}
+
+type Post {
+  id: ID!
+  text: String!
+  tags: [String]
+  comments: [Comment]
+}
+
+type Query {
+  posts: [Post]
+}
+
+type Mutation {
+  addPost(input: PostInput!): String
+  addComment(id: ID!, input: CommentInput!): String
+}

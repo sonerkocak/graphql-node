@@ -1,2 +1,7 @@
 *** GraphQL Notlar ***
 - Postman yerine Insomnia kullanılabilir.
+- Basic Types: String, Int, Float, Boolean, ID
+- default nullable. String! ile non-nullable.
+- list type için [Int]
+- While query fields are executed in parallel, mutation fields run in series, one after the other.
+- https://graphql.org/learn/
