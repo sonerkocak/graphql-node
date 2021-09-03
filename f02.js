@@ -49,4 +49,20 @@ query sorgula {
     id, text, tags, comments {id, text}
   }
 }
+
+{
+  req1: posts {
+    ...postFields
+  }
+  req2: posts {
+    ...postFields
+  }
+}
+
+fragment postFields on Post {
+  text
+  comments {
+    text
+  }
+}
  */
